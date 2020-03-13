@@ -4,6 +4,8 @@ import * as React from 'react';
 import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import gitServices from './src/httpClient/git.service';
+import {useEffect} from 'react';
 
 function HomeScreen() {
   return (
@@ -15,7 +17,15 @@ function HomeScreen() {
 
 const Stack = createStackNavigator();
 
-function App() {
+const App = () => {
+  const getUsers = async () => {
+    const response = await gitServices.getUsers('fabio');
+    console.log('response ', response.data);
+  };
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -23,6 +33,6 @@ function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 export default App;
