@@ -10,5 +10,5 @@ export const startLoading = (): DoceboAppAction<boolean> => ({
 
 export const stopLoading = (): DoceboAppAction<boolean> => ({
   type: STOP_LOADING,
-  payload: true,
+  payload: false,
 });
