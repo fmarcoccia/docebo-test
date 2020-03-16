@@ -4,7 +4,7 @@ import {
   FETCH_USERS_FAILURE,
   FETCH_USERS_SUCCESS, UsersActionPayload,
 } from 'action/users/users.action';
-import {GitHubUser} from "model/gitApi.model";
+import {GitHubUser} from 'model/gitApi.model';
 
 export interface UsersState {
   users: {

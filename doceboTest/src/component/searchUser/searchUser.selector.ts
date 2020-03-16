@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 import {AppDoceboStore} from 'store/types';
-import {GitHubUser} from "model/gitApi.model";
+import {GitHubUser} from 'model/gitApi.model';
 
 const getUsers = (state: AppDoceboStore) => state.usersReducer.users.items;
 const totalNumber = (state: AppDoceboStore) => state.usersReducer.users.totalNumber;
