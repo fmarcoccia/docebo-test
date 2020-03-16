@@ -11,12 +11,17 @@ import {ListItem, SearchBar} from 'react-native-elements';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {GitHubUser, IRequestGetUsers} from 'model/gitApi.model';
 import styles from './searchUser.style';
+import {Route} from "../../App";
 
-interface SearchUserProps extends StackNavigationProp<any,any>{
+export type SearchUserScreenNavigationProp = StackNavigationProp<any, any>;
+
+interface SearchUserProps{
     users: GitHubUser[],
     totalNumber: number,
     isLoading: boolean,
     getUsers: (input: IRequestGetUsers) => void;
+    fetchUser: (navigation: any, username: string) => void;
+    navigation: SearchUserScreenNavigationProp;
 }
 
 const SearchUserComponent = (props: SearchUserProps) => {
@@ -41,12 +46,15 @@ const SearchUserComponent = (props: SearchUserProps) => {
     }
   }, [params]);
 
-  const renderItem = (info: ListRenderItemInfo<any>) => {
+  const renderItem = (info: ListRenderItemInfo<GitHubUser>) => {
     return (
         <ListItem
+            onPress={() => {
+                props.fetchUser( props.navigation, info.item.login)
+            }}
             title={info.item.login}
             leftAvatar={{
-              source: info.item.avatar_url && {
+              source: {
                   uri: info.item.avatar_url,
                   cache: 'force-cache'
               },
