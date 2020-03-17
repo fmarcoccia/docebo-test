@@ -1,7 +1,7 @@
 import TabComponent, {TabName} from "../tab/tab.component";
 import React, {useState} from "react";
 import UserProfileContainer from 'component/userProfile/userProfile.container';
-import {Text} from "react-native";
+import UserReposContainer from "component/userRepos/userRepos.container";
 
 const TabManagerComponent = () => {
     const [screenToView, setScreenToView] = useState<TabName>();
@@ -13,7 +13,7 @@ const TabManagerComponent = () => {
         }}/>
             {
                 screenToView === TabName.PROFILE ?
-                    (<UserProfileContainer/>) : <Text>{'TODO'}</Text>
+                    (<UserProfileContainer/>) : <UserReposContainer/>
             }
         </>
     )

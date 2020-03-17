@@ -70,3 +70,14 @@ export interface GitHubUserInfo {
     created_at: Date;
     updated_at: Date;
 }
+
+export interface GitHubUserRepo {
+    id: number,
+    node_id: string,
+    name: string,
+    full_name: string,
+    stargazers_count: number,
+    owner: {
+        login: string
+    }
+}

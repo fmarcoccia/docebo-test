@@ -11,7 +11,6 @@ import {ListItem, SearchBar} from 'react-native-elements';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {GitHubUser, IRequestGetUsers} from 'model/gitApi.model';
 import styles from './searchUser.style';
-import {Route} from "../../App";
 
 export type SearchUserScreenNavigationProp = StackNavigationProp<any, any>;
 
