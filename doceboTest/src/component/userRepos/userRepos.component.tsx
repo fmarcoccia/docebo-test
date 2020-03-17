@@ -4,6 +4,7 @@ import {GitHubUserRepo} from "model/gitApi.model";
 import {ListItem, Button} from "react-native-elements";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {OrderBy, SortBy} from "http-client/git.service";
+import styles from "./userRepos.style";
 
 interface UserReposComponentProps {
     userRepos: GitHubUserRepo[],
@@ -65,7 +66,7 @@ const UserReposComponent = (props: UserReposComponentProps) => {
                     props.fetchRepo(props.username,mappingEnumSortWithType(title),mappingEnumOrderWithType(selectedOrder))
                 }}
                 titleStyle={[
-                    {fontWeight:'normal', fontSize: 12, color: 'black'},
+                    styles.titleButton,
                     selectedSort === title ? {color: 'orange'} : {}
                 ]}
                 icon={
@@ -82,8 +83,8 @@ const UserReposComponent = (props: UserReposComponentProps) => {
 
     const renderSortButtons = () => {
         return(
-            <View style={{flexDirection: 'row',justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{fontWeight: 'bold', fontSize: 12}}>{'Sort by'}</Text>
+            <View style={styles.buttonsContainer}>
+                <Text style={styles.label}>{'Sort by'}</Text>
                 {renderSortButton(SORT.CREATED)}
                 {renderSortButton(SORT.UPDATED)}
                 {renderSortButton(SORT.NAME)}
@@ -101,7 +102,7 @@ const UserReposComponent = (props: UserReposComponentProps) => {
                     props.fetchRepo(props.username,mappingEnumSortWithType(selectedSort),mappingEnumOrderWithType(title))
                 }}
                 titleStyle={[
-                    {fontWeight:'normal', fontSize: 12, color: 'black'},
+                    styles.titleButton,
                     selectedOrder === title ? {color: 'orange'} : {}
                 ]}
                 icon={
@@ -118,8 +119,8 @@ const UserReposComponent = (props: UserReposComponentProps) => {
 
     const renderOrderButtons = () => {
         return(
-            <View style={{flexDirection: 'row',justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{fontWeight: 'bold', fontSize: 12}}>{'Order by'}</Text>
+            <View style={styles.buttonsContainer}>
+                <Text style={styles.label}>{'Order by'}</Text>
                 {renderOrderButton(ORDER.ASC)}
                 {renderOrderButton(ORDER.DESC)}
             </View>
