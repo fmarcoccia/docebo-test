@@ -1,16 +1,14 @@
 import {
-    ActivityIndicator, Dimensions,
-    FlatList, Linking,
-    ListRenderItemInfo,
-    Platform, Text, TouchableOpacity,
+    Linking,
+    Text, TouchableOpacity,
     View,
 } from 'react-native';
 import * as React from 'react';
-import {useEffect} from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {GitHubUserInfo} from 'model/gitApi.model';
 import { Avatar } from 'react-native-elements';
 import { Icon } from 'react-native-elements'
+import styles from "./userProfile.style";
 
 interface UserProps extends StackNavigationProp<any,any>{
     user: GitHubUserInfo,
@@ -21,8 +19,8 @@ const UserComponent = (props: UserProps) => {
     const printItem = (key: string, attribute: string, isLink: boolean) => {
         if(attribute && !isLink){
             return(
-                <View style={{flexDirection: 'row',  alignItems: 'center'}}>
-                    <Text style={{fontWeight: 'bold', paddingVertical: 5}}>
+                <View style={styles.itemContainer}>
+                    <Text style={styles.item}>
                         {key+': '}
                     </Text>
                     <Text numberOfLines={1}>
@@ -33,11 +31,9 @@ const UserComponent = (props: UserProps) => {
         } else if(attribute && isLink){
             return (
                 <TouchableOpacity
-                    style={{flexDirection: 'row',
-                        alignItems: 'center',
-                        paddingVertical: 5}}
+                    style={styles.linkItemContainer}
                     onPress={() => {Linking.openURL(attribute)}}>
-                    <Text style={{fontWeight: 'bold', paddingVertical: 5}}>
+                    <Text style={styles.linkItem}>
                         {key+': '}
                     </Text>
                     <Text numberOfLines={1} style={{paddingRight: 5}}>{attribute}</Text>
@@ -54,14 +50,8 @@ const UserComponent = (props: UserProps) => {
     };
 
     return (
-        <View style={{
-            margin: 20,
-            width: 120
-        }}>
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center'
-            }}>
+        <View style={styles.main}>
+            <View style={styles.row}>
                 <Avatar
                     size={'large'}
                     rounded
@@ -69,10 +59,7 @@ const UserComponent = (props: UserProps) => {
                         uri: props.user.avatar_url,
                     }}
                 />
-                <View style={{
-                    paddingLeft: 20,
-                    justifyContent: 'center'
-                }}>
+                <View style={styles.itemsContainer}>
                     {printItem('Name', props.user.name, false)}
                     {printItem('Email', props.user.email, false)}
                     {printItem('Profile URL', props.user.html_url, true)}
