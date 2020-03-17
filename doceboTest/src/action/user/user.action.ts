@@ -26,7 +26,7 @@ export const fetchUser = (navigation: any, username: string): ThunkAction<Promis
             dispatch(dataUserSuccess({
                 userInfo: response
             }));
-            navigation.navigate(Route.PROFILE.name,{username: username});
+            navigation.navigate(Route.USER_DETAILS.name,{username: username});
         } catch (e) {
             dispatch(dataUserFailure());
         } finally {

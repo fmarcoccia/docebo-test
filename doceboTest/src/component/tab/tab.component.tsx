@@ -1,11 +1,24 @@
 import {ButtonGroup} from "react-native-elements";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {TouchableOpacity} from "react-native";
 import styles from "./tab.style";
 
-const TabComponent = () => {
-    const buttons = ['Profile', 'Repositories'];
+export enum TabName {
+ PROFILE = 'PROFILE',
+ REPOSITORIES = 'REPOSITORIES'
+}
+
+interface TabComponentProps {
+    onChangeTab: (tabName: TabName) => void
+}
+
+const TabComponent = (props: TabComponentProps) => {
+    const buttons = [TabName.PROFILE, TabName.REPOSITORIES];
     const [selectedIndex, setSelectedIndex] = useState(0);
+
+    useEffect(() => {
+        props.onChangeTab(buttons[selectedIndex])
+    },[selectedIndex]);
 
     return(
         <ButtonGroup
