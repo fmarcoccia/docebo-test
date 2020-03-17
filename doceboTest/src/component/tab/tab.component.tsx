@@ -1,11 +1,11 @@
-import {ButtonGroup} from "react-native-elements";
-import React, {useEffect, useState} from "react";
-import {TouchableOpacity} from "react-native";
-import styles from "./tab.style";
+import {ButtonGroup} from 'react-native-elements';
+import React, {useEffect, useState} from 'react';
+import {TouchableOpacity} from 'react-native';
+import styles from './tab.style';
 
 export enum TabName {
- PROFILE = 'PROFILE',
- REPOSITORIES = 'REPOSITORIES'
+    PROFILE = 'PROFILE',
+    REPOSITORIES = 'REPOSITORIES'
 }
 
 interface TabComponentProps {

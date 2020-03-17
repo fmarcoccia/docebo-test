@@ -30,7 +30,7 @@ export const usersReducer = (state: UsersState = initialState, action: DoceboApp
       };
     case FETCH_USERS_SUCCESS:
       return {
-       users: {...action.payload},
+        users: {...action.payload},
       };
     case FETCH_USERS_FAILURE:
       return {

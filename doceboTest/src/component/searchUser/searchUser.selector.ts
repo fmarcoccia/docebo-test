@@ -6,10 +6,10 @@ const getUsers = (state: AppDoceboStore) => state.usersReducer.users.items;
 const totalNumber = (state: AppDoceboStore) => state.usersReducer.users.totalNumber;
 
 export const getUsersSelector = createSelector(
-  [getUsers],
-  (users: GitHubUser[]) => {
-    return users;
-  },
+    [getUsers],
+    (users: GitHubUser[]) => {
+        return users;
+    },
 );
 
 export const getUsersTotalNumberSelector = createSelector(

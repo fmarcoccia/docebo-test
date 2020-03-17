@@ -1,0 +1,35 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-eslint-rules",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "interface-name": false,
+    "jsx-no-lambda": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "quotemark": [true, "single", "jsx-double"],
+    "no-empty-interface": false,
+    "no-var-keyword": true,
+    "no-consecutive-blank-lines": true,
+    "no-irregular-whitespace": true,
+    "no-duplicate-imports": true,
+    "no-use-before-declare": false,
+    "no-console": false,
+    "no-require-imports": true,
+    "no-string-literal": false,
+    "id-length": [3],
+    "variable-name": false,
+    "prefer-const": true,
+    "max-classes-per-file": false
+  },
+  "linterOptions": {
+    "exclude": [
+      "babel.config.js",
+      "node_modules"
+    ]
+  }
+}

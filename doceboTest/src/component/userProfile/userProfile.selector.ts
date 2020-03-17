@@ -4,7 +4,7 @@ import {GitHubUserInfo} from 'model/gitApi.model';
 
 const getUser = (state: AppDoceboStore) => {
     if(state.userReducer.user) {
-      return state.userReducer.user
+        return state.userReducer.user
     }
     throw 'doesn\'t exist user in store';
 };

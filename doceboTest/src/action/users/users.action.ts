@@ -4,7 +4,6 @@ import {DoceboAppAction} from 'action/types';
 import gitServices from 'http-client/git.service';
 import {GitHubUser, IRequestGetUsers} from 'model/gitApi.model';
 import {startLoading, stopLoading} from 'action/loading/loading.action';
-import {dataUserFailure, dataUserSuccess, FETCH_USER} from "../user/user.action";
 
 export const FETCH_USERS = 'FETCH_USERS';
 export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';

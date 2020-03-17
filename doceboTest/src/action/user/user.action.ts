@@ -4,7 +4,7 @@ import {DoceboAppAction} from 'action/types';
 import gitServices, {OrderBy, SortBy} from 'http-client/git.service';
 import {GitHubUserInfo, GitHubUserRepo} from 'model/gitApi.model';
 import {startLoading, stopLoading} from 'action/loading/loading.action';
-import {Route} from "../../App";
+import {Route} from 'navigation/route';
 
 export const FETCH_USER = 'FETCH_USER';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
@@ -27,7 +27,7 @@ export const fetchUser = (navigation: any, username: string): ThunkAction<Promis
             dispatch(dataUserSuccess({
                 userInfo: response[0]
             }));
-            navigation.navigate(Route.USER_DETAILS.name,{username: username});
+            navigation.navigate(Route.USER_DETAILS.name,{ username });
         } catch (e) {
             dispatch(dataUserFailure());
         } finally {

@@ -9,10 +9,7 @@ const initialState: LoadingState = {
   isLoading: false,
 };
 
-export const loadingReducer = (
-  state: LoadingState = initialState,
-  action: DoceboAppAction<boolean>,
-): LoadingState => {
+export const loadingReducer = (state: LoadingState = initialState, action: DoceboAppAction<boolean>): LoadingState => {
   switch (action.type) {
     case START_LOADING:
       return {

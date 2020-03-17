@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "tslint --project tsconfig.json"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
@@ -48,6 +48,10 @@
     "react-native-typescript-transformer": "^1.2.13",
     "react-test-renderer": "16.9.0",
     "redux-logger": "^3.0.6",
+    "tslint": "^6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^4.2.0",
     "typescript": "^3.8.3"
   },
   "jest": {

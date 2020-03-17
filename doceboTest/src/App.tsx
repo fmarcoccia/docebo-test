@@ -4,17 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Provider} from 'react-redux';
 import store from 'store/store';
 import SearchUserContainer from 'component/searchUser/searchUser.container';
-import TabManagerComponent from "./component/tabManager/tabManager.component";
-
-export const Route = {
-    HOME:{
-        name: 'SearchUsers',
-        title: 'Search Git Users'
-    },
-    USER_DETAILS:{
-        name: 'UserDetails'
-    }
-};
+import TabManagerComponent from './component/tabManager/tabManager.component';
+import {Route} from './navigation/route';
 
 const Stack = createStackNavigator();
 

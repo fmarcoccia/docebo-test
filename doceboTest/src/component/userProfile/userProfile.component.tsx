@@ -6,9 +6,8 @@ import {
 import * as React from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {GitHubUserInfo} from 'model/gitApi.model';
-import { Avatar } from 'react-native-elements';
-import { Icon } from 'react-native-elements'
-import styles from "./userProfile.style";
+import { Avatar, Icon } from 'react-native-elements';
+import styles from './userProfile.style';
 
 interface UserProps extends StackNavigationProp<any,any>{
     user: GitHubUserInfo,
@@ -39,9 +38,9 @@ const UserComponent = (props: UserProps) => {
                     <Text numberOfLines={1} style={{paddingRight: 5}}>{attribute}</Text>
                     <Icon
                         size={15}
-                        name='open-in-new'
+                        name={'open-in-new'}
                         type={'material'}
-                        color='black'
+                        color={'black'}
                     />
                 </TouchableOpacity>
             )

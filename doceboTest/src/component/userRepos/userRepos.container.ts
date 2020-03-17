@@ -1,11 +1,11 @@
 import {AppDoceboStore} from 'store/types';
 import {Dispatch} from 'react';
 import {connect} from 'react-redux';
-import {getUserReposSelector} from "./userRepos.selector";
-import UserReposComponent from "./userRepos.component";
-import {OrderBy, SortBy} from "http-client/git.service";
-import {fetchUserRepos} from "action/user/user.action";
-import {getUserSelector} from "component/userProfile/userProfile.selector";
+import {getUserReposSelector} from './userRepos.selector';
+import UserReposComponent from './userRepos.component';
+import {OrderBy, SortBy} from 'http-client/git.service';
+import {fetchUserRepos} from 'action/user/user.action';
+import {getUserSelector} from 'component/userProfile/userProfile.selector';
 
 const mapStateToProps = (state: AppDoceboStore) => ({
     userRepos: getUserReposSelector(state),

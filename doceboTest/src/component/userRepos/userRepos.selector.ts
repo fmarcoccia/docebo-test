@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 import {AppDoceboStore} from 'store/types';
-import {GitHubUserRepo} from "model/gitApi.model";
+import {GitHubUserRepo} from 'model/gitApi.model';
 
 const getUserRepos = (state: AppDoceboStore) => {
     if(state.userReducer.repos && state.userReducer.repos.length > 0) {
