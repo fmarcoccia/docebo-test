@@ -17,7 +17,7 @@ interface SearchUserProps{
     users: GitHubUser[],
     totalNumber: number,
     getUsers: (input: IRequestGetUsers) => void;
-    fetchUser: (navigation: any, username: string) => void;
+    aboutUser: (navigation: any, username: string) => void;
     navigation: SearchUserScreenNavigationProp;
 }
 
@@ -45,7 +45,7 @@ const SearchUserComponent = (props: SearchUserProps) => {
                     flatListRef.scrollToOffset({ animated: true, offset: 0 });
                 }
                 props.getUsers(params);
-            }, 5);
+            }, 1000);
         }
     }, [params]);
 
@@ -53,7 +53,7 @@ const SearchUserComponent = (props: SearchUserProps) => {
         return (
             <ListItem
                 onPress={() => {
-                    props.fetchUser( props.navigation, info.item.login)
+                    props.aboutUser( props.navigation, info.item.login)
                 }}
                 Component={TouchableOpacity}
                 title={info.item.login}

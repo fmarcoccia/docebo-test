@@ -15,23 +15,31 @@ export interface UserActionPayload{
     userRepo?: GitHubUserRepo[]
 }
 
+export const aboutUser = (navigation: any, username: string): ThunkAction<Promise<void>, AppDoceboStore, {}, DoceboAppAction<any>> => {
+    return async (dispatch: ThunkDispatch<AppDoceboStore, {}, DoceboAppAction<any>>, getState: () => AppDoceboStore,) => {
+        dispatch(startLoading());
+        await Promise.all([
+            dispatch(fetchUser(navigation, username)),
+            dispatch(fetchUserRepos(username))
+        ]);
+        dispatch(stopLoading());
+        navigation.navigate(Route.USER_DETAILS.name,{ username });
+    };
+};
+
 export const fetchUser = (navigation: any, username: string): ThunkAction<Promise<void>, AppDoceboStore, {}, DoceboAppAction<any>> => {
     return async (dispatch: ThunkDispatch<AppDoceboStore, {}, DoceboAppAction<any>>, getState: () => AppDoceboStore,) => {
         dispatch({
             type: FETCH_USER,
             payload: null,
         });
-        dispatch(startLoading());
         try {
-            const response = await Promise.all([gitServices.getUser(username),dispatch(fetchUserRepos(username))]) ;
+            const response = await gitServices.getUser(username);
             dispatch(dataUserSuccess({
-                userInfo: response[0]
+                userInfo: response
             }));
-            navigation.navigate(Route.USER_DETAILS.name,{ username });
         } catch (e) {
             dispatch(dataUserFailure());
-        } finally {
-            dispatch(stopLoading())
         }
     };
 };
@@ -58,7 +66,6 @@ export const fetchUserRepos = (username: string, sortBy?: SortBy, orderBy?: Orde
             type: FETCH_USER_REPOS,
             payload: null,
         });
-        dispatch(startLoading());
         try {
             const response = await gitServices.getRepos(username,sortBy,orderBy);
             dispatch(dataUserReposSuccess({
@@ -66,8 +73,6 @@ export const fetchUserRepos = (username: string, sortBy?: SortBy, orderBy?: Orde
             }));
         } catch (e) {
             dispatch(dataUserReposFailure());
-        } finally {
-            dispatch(stopLoading())
         }
     };
 };
