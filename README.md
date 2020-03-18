@@ -1,7 +1,7 @@
 # Docebo Test App
 ## INSTALLATION
 
-###Prerequisites
+### Prerequisites
 
 Install `react-native-cli` globally installed.
 
