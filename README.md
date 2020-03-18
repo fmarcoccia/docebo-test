@@ -26,12 +26,19 @@ Before running the project as usual please install all dependencies with:
 ```
  cd doceboTest && npm install && cd ios/ && pod install && cd ..
 ```
-To run ios
+Run project before open bash and get
 ```
-    npm run ios
+react-native start
 ```
-To run android (suggested: open android emulator before)
+To run ios/android:
+
+Open another bash
 ```
-    npm run android
+npm run ios
+```
+(suggested: open android emulator before)
+
+```
+npm run android
 ```
 
