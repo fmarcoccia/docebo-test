@@ -13,6 +13,11 @@ interface UserProps extends StackNavigationProp<any,any>{
     user: GitHubUserInfo,
 }
 
+/**
+ * This component render a screen of a github user details (name, git profile link, email, location)
+ * @param props
+ * @constructor
+ */
 const UserComponent = (props: UserProps) => {
 
     const printItem = (key: string, attribute: string, isLink: boolean) => {

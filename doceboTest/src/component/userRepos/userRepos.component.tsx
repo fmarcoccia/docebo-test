@@ -23,6 +23,11 @@ enum ORDER{
     DESC = 'Desc'
 }
 
+/**
+ * This component render a list of github repos user - possible to order and sort it
+ * @param props
+ * @constructor
+ */
 const UserReposComponent = (props: UserReposComponentProps) => {
     const [selectedSort, setSort] = useState<SORT>(SORT.NAME);
     const [selectedOrder, setOrder] = useState<ORDER>(ORDER.ASC);

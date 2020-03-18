@@ -21,6 +21,11 @@ interface SearchUserProps{
     navigation: SearchUserScreenNavigationProp;
 }
 
+/**
+ * This component render an infinite scroll list with searchBar to search a github user
+ * @param props
+ * @constructor
+ */
 const SearchUserComponent = (props: SearchUserProps) => {
     let flatListRef: FlatList;
     const [params, setParams] = useState<IRequestGetUsers>({

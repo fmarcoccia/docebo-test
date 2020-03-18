@@ -5,6 +5,12 @@ import styles from "./loader.style";
 interface LoaderComponentProps {
     isLoading: boolean
 }
+
+/**
+ * This component render a loader when app is in status "loading"
+ * @param props
+ * @constructor
+ */
 const LoaderComponent = (props: LoaderComponentProps) => {
     return(
         props.isLoading ?

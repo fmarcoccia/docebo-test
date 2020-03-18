@@ -3,6 +3,10 @@ import React, {useState} from 'react';
 import UserProfileContainer from 'component/userProfile/userProfile.container';
 import UserReposContainer from 'component/userRepos/userRepos.container';
 
+/**
+ * This component manage the interaction of TabComponent - Render the right component
+ * @constructor
+ */
 const TabManagerComponent = () => {
     const [screenToView, setScreenToView] = useState<TabName>();
 

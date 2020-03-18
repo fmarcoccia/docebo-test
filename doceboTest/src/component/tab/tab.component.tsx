@@ -12,6 +12,12 @@ interface TabComponentProps {
     onChangeTab: (tabName: TabName) => void
 }
 
+/**
+ * This component render a predefenite tabs component: Profile and Repositories relatives to a specific github user
+ * @param props
+ * @constructor
+ */
+
 const TabComponent = (props: TabComponentProps) => {
     const buttons = [TabName.PROFILE, TabName.REPOSITORIES];
     const [selectedIndex, setSelectedIndex] = useState(0);
