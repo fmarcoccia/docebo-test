@@ -129,11 +129,18 @@ const UserReposComponent = (props: UserReposComponentProps) => {
 
     return (
         <>
-            {renderSortButtons()}
-            {renderOrderButtons()}
-            <FlatList data={props.userRepos}
-                      keyExtractor={keyExtractor}
-                      renderItem={renderItem}/>
+            {
+                props.userRepos.length > 0 ?
+                    (<>
+                        {renderSortButtons()}
+                        {renderOrderButtons()}
+                        <FlatList data={props.userRepos}
+                                  keyExtractor={keyExtractor}
+                                  renderItem={renderItem}/>
+                    </>) :
+                    <Text style={styles.emptyState}>{'User doesn\'t have any repo :(' }</Text>
+            }
+
         </>
     )
 };

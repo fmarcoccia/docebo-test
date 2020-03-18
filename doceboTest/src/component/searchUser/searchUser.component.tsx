@@ -75,7 +75,7 @@ const SearchUserComponent = (props: SearchUserProps) => {
     };
 
     const handleLoadMore = () => {
-        if(props.totalNumber > props.users.length){
+        if(props.totalNumber > props.users.length && !loadMore){
             setLoadMore(true);
             setParams((prevState) => {
                 return{

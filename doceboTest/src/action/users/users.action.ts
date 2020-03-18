@@ -26,7 +26,7 @@ export const fetchUsers = (input: IRequestGetUsers): ThunkAction<Promise<void>, 
       dispatch(dataUsersSuccess({
         // concat new response in case page > 1 for infinite scroll list
         items: input.pageableRequest.page > 1 ?
-            [...getState().usersReducer.users.items, ...response.items] : response.items,
+            [...getState().usersReducer.users.items, ...response.items] : Array.from(response.items),
         totalNumber: response.total_count,
         page: input.pageableRequest.page
       }));
