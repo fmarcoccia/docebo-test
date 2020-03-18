@@ -2,7 +2,7 @@ import {
     ActivityIndicator,
     FlatList,
     ListRenderItemInfo,
-    Platform,
+    Platform, TouchableOpacity,
     View,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -16,7 +16,6 @@ export type SearchUserScreenNavigationProp = StackNavigationProp<any, any>;
 interface SearchUserProps{
     users: GitHubUser[],
     totalNumber: number,
-    isLoading: boolean,
     getUsers: (input: IRequestGetUsers) => void;
     fetchUser: (navigation: any, username: string) => void;
     navigation: SearchUserScreenNavigationProp;
@@ -31,6 +30,13 @@ const SearchUserComponent = (props: SearchUserProps) => {
             per_page: 50
         }
     });
+    const [typing, setTyping] = useState(false);
+    const [loadMore, setLoadMore] = useState(false);
+
+    useEffect(() => {
+        setTyping(false);
+        setLoadMore(false);
+    },[props.users]);
 
     useEffect(() => {
         if (params && params.searchString && params.searchString.length > 0) {
@@ -39,7 +45,7 @@ const SearchUserComponent = (props: SearchUserProps) => {
                     flatListRef.scrollToOffset({ animated: true, offset: 0 });
                 }
                 props.getUsers(params);
-            }, 150);
+            }, 5);
         }
     }, [params]);
 
@@ -49,6 +55,7 @@ const SearchUserComponent = (props: SearchUserProps) => {
                 onPress={() => {
                     props.fetchUser( props.navigation, info.item.login)
                 }}
+                Component={TouchableOpacity}
                 title={info.item.login}
                 leftAvatar={{
                     source: {
@@ -69,6 +76,7 @@ const SearchUserComponent = (props: SearchUserProps) => {
 
     const handleLoadMore = () => {
         if(props.totalNumber > props.users.length){
+            setLoadMore(true);
             setParams((prevState) => {
                 return{
                     ...prevState,
@@ -83,7 +91,7 @@ const SearchUserComponent = (props: SearchUserProps) => {
     };
 
     const renderFooter = () => {
-        if (!props.isLoading) return null;
+        if (!loadMore) return null;
 
         return (
             <View style={styles.activityIndicator}>
@@ -98,8 +106,9 @@ const SearchUserComponent = (props: SearchUserProps) => {
                 placeholder={'Type to search user...'}
                 platform={Platform.OS === 'android' ? 'android' : 'ios'}
                 value={params.searchString}
-                showLoading={props.isLoading}
+                showLoading={typing}
                 onChange={e => {
+                    setTyping(true);
                     setParams({
                         searchString: e.nativeEvent.text,
                         pageableRequest: {
@@ -110,6 +119,7 @@ const SearchUserComponent = (props: SearchUserProps) => {
                 }}
             />
             <FlatList
+                keyboardShouldPersistTaps={'always'}
                 contentContainerStyle={styles.listContainer}
                 data={props.users}
                 ref={(ref: FlatList) => flatListRef = ref}

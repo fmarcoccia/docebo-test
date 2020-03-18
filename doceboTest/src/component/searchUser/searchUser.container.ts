@@ -9,8 +9,7 @@ import {fetchUser} from 'action/user/user.action';
 
 const mapStateToProps = (state: AppDoceboStore) => ({
   users: getUsersSelector(state),
-  totalNumber: getUsersTotalNumberSelector(state),
-  isLoading: state.loadingReducer.isLoading
+  totalNumber: getUsersTotalNumberSelector(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({

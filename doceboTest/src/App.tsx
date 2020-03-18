@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Provider} from 'react-redux';
 import store from 'store/store';
 import SearchUserContainer from 'component/searchUser/searchUser.container';
+import LoaderContainer from 'component/loader/loader.container';
 import TabManagerComponent from './component/tabManager/tabManager.component';
 import {Route} from './navigation/route';
 
@@ -13,6 +14,7 @@ const App = () => {
     return (
         <Provider store={store}>
             <NavigationContainer>
+                <LoaderContainer/>
                 <Stack.Navigator initialRouteName={Route.HOME.name}>
                     <Stack.Screen name={Route.HOME.name}
                                   options={{title: Route.HOME.title}}

@@ -21,7 +21,6 @@ export const fetchUsers = (input: IRequestGetUsers): ThunkAction<Promise<void>, 
       type: FETCH_USERS,
       payload: null,
     });
-    dispatch(startLoading());
     try {
       const response = await gitServices.getUsers(input);
       dispatch(dataUsersSuccess({
@@ -33,8 +32,6 @@ export const fetchUsers = (input: IRequestGetUsers): ThunkAction<Promise<void>, 
       }));
     } catch (e) {
       dispatch(dataUsersFailure());
-    } finally {
-      dispatch(stopLoading())
     }
   };
 };
